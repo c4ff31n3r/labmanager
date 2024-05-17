@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Оценка лабораторной работы</title>
+  <link rel="stylesheet" href="static/style.css">
+  <script src="static/javascript.js" defer></script>
+</head>
+
+<body>
+  <nav class="navbar">
+    <span class="menu-btn material-symbols-rounded">≡</span>
+    <div class="logo">
+      <h2>Оценка лабораторной работы</h2>
+    </div>
+    <ul class="links">
+      <span class="close-btn material-symbols-rounded">✕</span>
+      <li><a href="/">Главная</a></li>
+      <li><a href="/about">О нас</a></li>
+    </ul>
+    {% if session.get('is_authorized') == True %}
+    <a class="logout-btn" id="logoutBtn" href="/logout">Выйти</a>
+    {% else %}
+    <button class="login-btn" id="loginBtn">Войти</button>
+    {% endif %}
+  </nav>
+
+  <div class="blur-bg-overlay">
+  </div>
+  <div class="form-popup">
+    <span class="close-btn material-symbols-rounded">✕</span>
+    <div class="form-box">
+      <div class="form-details">
+        <h2>Добро пожаловать</h2>
+        <p>Для отправки введите данные для входа</p>
+      </div>
+      <div class="form-content">
+        <h2>Вход в систему</h2>
+        <form id="loginForm">
+          <div class="input-field">
+            <input type="text" name="login" value="{{ request.form.login }}" required>
+            <label>Логин</label>
+          </div>
+          <div class="input-field">
+            <input type="password" name="password" value="{{ request.form.password }}" required>
+            <label>Пароль</label>
+          </div>
+          <a href="#" class="forgot-pass">Забыли пароль?</a>
+          <br>
+          <button type="submit">Войти</button>
+        </form>
+        <br>
+        <p id="error" style="display: none;"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-container">
+    <p><strong>ФИО студента:</strong></p>
+    <p>{{ student_name }}</p>
+  </div>
+  <br>
+  <br>
+
+  <div class="text-container">
+    <p><strong>Группа:</strong></p>
+    <p>{{ group_name }}</p>
+  </div>
+  <br>
+  <br>
+
+  <div class="text-container">
+    <p><strong>Лабораторная работа:</strong></p>
+    <p>{{ lab_name }}</p>
+  </div>
+  <br>
+  <br>
+
+  <div class="text-container">
+    <p><strong>Статус работы:</strong></p>
+    <p>{{ lab_status }}</p>
+  </div>
+  <br>
+  <br>
+  <button type="button" class="collapsible">Сообщения</button>
+  <div class="content">
+    {% if messages %}
+    {% for message in messages %}
+    <button type="button" class="collapsible">Сообщение {{ loop.index }}</button>
+    <div class="content text-container">
+      <p>{{ message[0] }}</p>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p>Сообщений нет.</p>
+    {% endif %}
+  </div>
+  <br>
+  <br>
+  <br>
+
+  {% if session.get('is_authorized') == True %}
+  <form id="feedbackForm">
+    <p>Оценка:</p>
+    <select class="select" name="new_status">
+      <option value="3">Зачтено</option>
+      <option value="2">Не зачтено</option>
+    </select>
+    <br>
+
+    <p>Комментарий к работе:</p>
+    <textarea id="textarea" type="text" name="message" placeholder="Введите комментарий (не более 1000 символов)"
+      value="{{ request.form.message }}"></textarea>
+    <br>
+
+    {% set last_flash_message = get_flashed_messages(True)[-1] %}
+    {% if last_flash_message %}
+    <br>
+    <div class="flash {{ last_flash_message[0] }}">{{ last_flash_message[1] }}</div>
+    <br>
+    {% endif %}
+
+    <button class="submit-btn" type="submit">Отправить обратную связь </button>
+  </form>
+  {% else %}
+  <p><strong>Войдите, чтобы поставить оценку и написать комментарий.</strong></p>
+  {% endif %}
+</body>
+
+</html>

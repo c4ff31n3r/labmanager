@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "open sans", sans-serif;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(90deg, #5d5d5d, #232323);
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    padding: 0 10px;
+}
+
+.foot {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.foot pre {
+    color: #FFF;
+    font-size: 10px;
+    font-family: 'Roboto', Arial, sans-serif;
+    text-align: match-parent;
+    line-height: 1.5;
+}
+
+.navbar {
+    display: flex;
+    padding: 22px 0;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+.navbar .menu-btn {
+    display: none;
+    color: #000;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.navbar .logo {
+    display: flex;
+    gap: 10px;
+    text-decoration: none;
+    align-items: center;
+    margin-left: 2em;
+}
+
+.navbar .logo img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.navbar .logo h2 {
+    font-size: 1.7rem;
+    font-weight: 600;
+    font-family: 'Roboto', Arial, sans-serif;
+    color: white;
+}
+
+.navbar .links {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.navbar .links .close-btn {
+    display: none;
+    color: #000;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 1.5rem;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.navbar .links a {
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    font-weight: bold;
+}
+
+.navbar .links a:hover {
+    color: rgb(0, 0, 0);
+    transition: 0.3s ease;
+
+}
+
+p {
+    color: #000;
+    font-size: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+    font-weight: bold;
+    font-family: 'Roboto', Arial, sans-serif;
+    text-align: match-parent;
+}
+
+.text-container {
+    margin-left: 10%;
+    width: 80%;
+    background-color: white;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.text-container p {
+    color: #000;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+@media screen and (min-width: 320px) {
+    p {
+        font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    p {
+        font-size: 22px;
+    }
+}

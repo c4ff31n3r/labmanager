@@ -20,8 +20,4 @@
 
 - Max Martyanov - Teamlead
 - Ruslan Krupitsa (c4ff31n3r) - Backend-developer
-<<<<<<< HEAD
 - Danil Zlobin - Frontend-developer
-=======
-- Danil Zlobin - Frontend-developer
->>>>>>> d5f73249256c91badf8554b0f2122acada7168e9
